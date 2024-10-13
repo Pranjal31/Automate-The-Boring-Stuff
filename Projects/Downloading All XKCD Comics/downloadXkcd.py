@@ -1,11 +1,15 @@
 #! python3
 # downloadXkcd.py - Downloads every single XKCD comic.
 
-import requests, bs4, os
+#import os
+import requests, bs4
+from pathlib import Path
 
 URL_BASE = 'https://xkcd.com'
 url = URL_BASE
-os.makedirs('xkcd', exist_ok=True)
+
+Path('xkcd').mkdir(exist_ok=True)
+#os.makedirs('xkcd', exist_ok=True)
 
 while not url.endswith('#'):
     # Download the page
@@ -26,7 +30,9 @@ while not url.endswith('#'):
     res = requests.get(imgUrl)
     res.raise_for_status()
 
-    imageFile = open(os.path.join('xkcd', os.path.basename(imgUrl)), 'wb')
+    #imageFile = open(os.path.join('xkcd', os.path.basename(imgUrl)), 'wb')
+    baseName = Path(imgUrl).name
+    imageFile = open(Path('xkcd') / Path(baseName), 'wb')
     for chunk in res.iter_content(100000):
         imageFile.write(chunk)
     imageFile.close()
