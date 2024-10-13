@@ -32,7 +32,7 @@ while not url.endswith('#'):
     imageFile.close()
 
     # Get the Prev button's url
-    PrevElem = soup.select('a[rel="prev"]')[0]
-    url = URL_BASE + PrevElem.get('href')
+    prevElem = soup.select('a[rel="prev"]')[0]
+    url = URL_BASE + prevElem.get('href')
 
 print("Done")
