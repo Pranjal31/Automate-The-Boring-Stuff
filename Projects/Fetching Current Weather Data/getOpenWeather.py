@@ -57,7 +57,7 @@ for weather in weather_json['list']:
         print(weather['weather'][0]['main'] + ' - ' + weather['weather'][0]['description'])
         today_plus_1_done = True
     elif today_plus_2_done != True and weather['dt_txt'].split(' ')[0] == today_plus_1:
-        print('Dat after tomorrow:')
+        print('Day after tomorrow:')
         print(weather['weather'][0]['main'] + ' - ' + weather['weather'][0]['description'])
         today_plus_2_done = True
     elif today_plus_2_done == True and today_plus_1_done == True and today_done == True:
